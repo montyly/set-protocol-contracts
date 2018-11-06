@@ -188,7 +188,7 @@ contract RebalancingSetToken is
         uint256 _auctionPriceDivisor
     )
         external
-    {   
+    {
         ICore core = ICore(IRebalancingSetFactory(factory).core());
 
         // Make sure it is manager that is proposing the rebalance
@@ -199,7 +199,7 @@ contract RebalancingSetToken is
 
         // Make sure enough time has passed from last rebalance to start a new proposal
         require(block.timestamp >= lastRebalanceTimestamp.add(rebalanceInterval), "PROPOSE_CALLED_TOO_EARLY");
-        
+
         // Check that new proposed Set is valid Set created by Core
         require(core.validSets(_nextSet), "PROPOSED_SET_INVALID");
 
@@ -404,7 +404,7 @@ contract RebalancingSetToken is
         uint256[] memory inflowUnitArray = new uint256[](combinedTokenArray.length);
         uint256[] memory outflowUnitArray = new uint256[](combinedTokenArray.length);
 
-        // Get bid conversion price, currently static placeholder for calling auctionlibrary
+        // Get bid conversion price from specified auction price curve
         uint256 priceNumerator = IAuctionPriceCurve(auctionLibrary).getCurrentPrice(
             auctionStartTime,
             auctionStartPrice,
