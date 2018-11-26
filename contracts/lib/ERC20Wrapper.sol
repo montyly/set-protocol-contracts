@@ -17,7 +17,7 @@
 pragma solidity 0.4.25;
 
 import { CommonMath } from "./CommonMath.sol";
-import { IERC20 } from "./IERC20.sol";
+import { MyIERC20 } from "./MyIERC20.sol";
 
 
 /**
@@ -47,7 +47,7 @@ library ERC20Wrapper {
         view
         returns (uint256)
     {
-        return IERC20(_token).balanceOf(_owner);
+        return MyIERC20(_token).balanceOf(_owner);
     }
 
     /**
@@ -67,7 +67,7 @@ library ERC20Wrapper {
         view
         returns (uint256)
     {
-        return IERC20(_token).allowance(_owner, _spender);
+        return MyIERC20(_token).allowance(_owner, _spender);
     }
 
     /**
@@ -85,7 +85,7 @@ library ERC20Wrapper {
     )
         external
     {
-        IERC20(_token).transfer(_to, _quantity);
+        MyIERC20(_token).transfer(_to, _quantity);
 
         // Check that transfer returns true or null
         require(
@@ -111,7 +111,7 @@ library ERC20Wrapper {
     )
         external
     {
-        IERC20(_token).transferFrom(_from, _to, _quantity);
+        MyIERC20(_token).transferFrom(_from, _to, _quantity);
 
         // Check that transferFrom returns true or null
         require(
@@ -135,7 +135,7 @@ library ERC20Wrapper {
     )
         internal
     {
-        IERC20(_token).approve(_spender, _quantity);
+        MyIERC20(_token).approve(_spender, _quantity);
 
         // Check that approve returns true or null
         require(

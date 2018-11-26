@@ -24,7 +24,7 @@ import { ExchangeHeaderLibrary } from "../lib/ExchangeHeaderLibrary.sol";
 import { ICore } from "../interfaces/ICore.sol";
 import { IExchangeWrapper } from "../interfaces/IExchangeWrapper.sol";
 import { ISetToken } from "../interfaces/ISetToken.sol";
-import { ISignatureValidator } from "../interfaces/ISignatureValidator.sol";
+import { MyISignatureValidator } from "../interfaces/MyISignatureValidator.sol";
 import { ITransferProxy } from "../interfaces/ITransferProxy.sol";
 import { IVault } from "../interfaces/IVault.sol";
 import { LibBytes } from "../../external/0x/LibBytes.sol";
@@ -146,7 +146,7 @@ contract IssuanceOrderModule is
 
         // Verify signature is authentic, if already been filled before skip to save gas
         if (orderFills[order.orderHash] == 0) {
-            ISignatureValidator(ICore(core).signatureValidator()).validateSignature(
+            MyISignatureValidator(ICore(core).signatureValidator()).validateSignature(
                 order.orderHash,
                 order.makerAddress,
                 _signature

@@ -23,8 +23,9 @@ pragma solidity 0.4.25;
  *
  * Interface for using ERC20 Tokens. This interface is needed to interact with tokens that are not
  * fully ERC20 compliant and return something other than true on successful transfers.
+ * Named MyIERC20 instead of IERC20 to avoid collision with the openzeppelin library
  */
-interface IERC20 {
+interface MyIERC20 {
     function balanceOf(
         address _owner
     )

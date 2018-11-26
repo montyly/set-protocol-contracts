@@ -17,13 +17,14 @@
 pragma solidity 0.4.25;
 
 /**
- * @title ISignatureValidator
+ * @title MyISignatureValidator
  * @author Set Protocol
  *
- * The ISignatureValidator interface provides a light-weight, structured way to interact with the
+ * The MyISignatureValidator interface provides a light-weight, structured way to interact with the
  * Signature Validator contract from another contract.
+ * Named MyISignatureValidator instead of ISignatureValidator to avoid collision with the 0x Exchange interface
  */
-interface ISignatureValidator {
+interface MyISignatureValidator {
 
     /* ============ External Functions ============ */
 
